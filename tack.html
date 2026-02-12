@@ -1,35 +1,29 @@
 <!DOCTYPE html>
-<html lang="sv" dir="ltr">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tack | On Demand People</title>
-    <meta name="robots" content="noindex, nofollow">
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-    <meta name="theme-color" content="#1a6b63">
-    
+    <title>Tack! · On Demand People</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --deep-teal: #1a6b63;
+            --petrol: #0d3d3d;
             --petrol-light: #8bc4bc;
             --amber: #d4a84b;
             --sand: #e8dfd0;
             --night: #1a1a2e;
             --cream: #faf8f5;
             --warm-gray: #6b6b6b;
-            --font-serif: 'Fraunces', Georgia, serif;
-            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { font-size: 16px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: var(--font-sans);
+            font-family: 'DM Sans', sans-serif;
             background: var(--night);
             color: var(--cream);
             min-height: 100vh;
@@ -37,170 +31,95 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 24px;
+            padding: 40px;
             text-align: center;
-            line-height: 1.7;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Decorative background */
-        body::before {
-            content: '';
-            position: absolute;
-            width: 400px; height: 400px;
-            border-radius: 50%;
-            border: 50px solid rgba(26, 107, 99, 0.08);
-            top: -150px; right: -100px;
-        }
-        body::after {
-            content: '';
-            position: absolute;
-            width: 25px; height: 25px;
-            border-radius: 50%;
-            background: var(--amber);
-            opacity: 0.3;
-            top: 20%; right: 15%;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 60px;
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--cream);
-            opacity: 0;
-            animation: fadeIn 0.6s ease 0.2s forwards;
-            text-decoration: none;
-            position: relative;
-            z-index: 2;
-        }
-        .logo img { width: 36px; height: 36px; }
-
-        .content {
-            max-width: 550px;
-            position: relative;
-            z-index: 2;
+            margin-bottom: 48px;
         }
 
-        .checkmark {
+        .logo svg {
             width: 80px;
             height: 80px;
-            background: var(--amber);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 40px;
-            opacity: 0;
-            transform: scale(0.5);
-            animation: popIn 0.5s ease 0.4s forwards;
-        }
-        .checkmark svg {
-            width: 40px;
-            height: 40px;
-            stroke: var(--night);
-            stroke-width: 3;
-        }
-
-        @keyframes popIn {
-            to { opacity: 1; transform: scale(1); }
         }
 
         h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 24px;
-            opacity: 0;
-            animation: fadeIn 0.6s ease 0.6s forwards;
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
         }
 
-        .message {
-            font-size: 1.25rem;
+        p {
+            font-size: 1.2rem;
             color: var(--sand);
             margin-bottom: 16px;
-            opacity: 0;
-            animation: fadeIn 0.6s ease 0.8s forwards;
+            max-width: 450px;
+            line-height: 1.7;
         }
 
-        .submessage {
-            font-family: var(--font-serif);
-            font-size: 1rem;
-            color: var(--petrol-light);
-            font-style: italic;
-            margin-bottom: 48px;
-            opacity: 0;
-            animation: fadeIn 0.6s ease 1s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        .back-link {
+        .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--petrol-light);
-            font-weight: 500;
-            font-size: 0.95rem;
+            margin-top: 32px;
+            padding: 16px 32px;
+            background: var(--amber);
+            color: var(--night);
             text-decoration: none;
-            opacity: 0;
-            animation: fadeIn 0.6s ease 1.2s forwards;
-            transition: color 0.2s ease;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
         }
-        .back-link:hover { color: var(--amber); }
-        .back-link svg { width: 18px; height: 18px; }
 
-        .quote {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-family: var(--font-serif);
-            font-size: 1.125rem;
-            color: var(--deep-teal);
-            font-style: italic;
-            opacity: 0;
-            animation: fadeIn 0.6s ease 1.4s forwards;
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 168, 75, 0.3);
+        }
+
+        .decor-ring {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            border: 60px solid rgba(26, 107, 99, 0.08);
+            top: -100px;
+            right: -100px;
+            pointer-events: none;
+        }
+
+        .decor-dot {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--amber);
+            border-radius: 50%;
+            opacity: 0.4;
+            bottom: 15%;
+            left: 10%;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <a href="/" class="logo">
-        <img src="images/logo-white.svg" alt="On Demand People">
-        On Demand People
-    </a>
+    <div class="decor-ring"></div>
+    <div class="decor-dot"></div>
 
-    <div class="content">
-        <div class="checkmark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <polyline points="20 6 9 17 4 12"/>
-            </svg>
-        </div>
-
-        <h1>Tack för ditt intresse.</h1>
-
-        <p class="message">
-            On Demand People bygger på personliga relationer. 
-            Vi hör av oss – antingen för att vi vill veta mer, 
-            eller för att någon i nätverket redan känner dig.
-        </p>
-
-        <p class="submessage">
-            Det tar den tid det tar. Det är en del av poängen.
-        </p>
-
-        <a href="/" class="back-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            Tillbaka till startsidan
-        </a>
-
-        <p class="quote">"Ge, och du kommer att få."</p>
+    <div class="logo">
+        <svg viewBox="0 0 100 100">
+            <circle cx="40" cy="50" r="28" fill="none" stroke="#ffffff" stroke-width="12"/>
+            <circle cx="78" cy="32" r="9" fill="#8bc4bc"/>
+        </svg>
     </div>
+
+    <h1>Tack!</h1>
+    <p>Vi har mottagit ditt meddelande och återkommer så snart vi kan.</p>
+    <p style="font-size: 1rem; color: var(--petrol-light);">Ser fram emot att prata med dig.</p>
+
+    <a href="index.html" class="btn">
+        ← Tillbaka till startsidan
+    </a>
 </body>
 </html>
