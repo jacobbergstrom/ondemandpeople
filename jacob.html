@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="sv" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Bergström | On Demand People</title>
+    <meta name="description" content="Möt Jacob Bergström, grundare av On Demand People. Hör hans vision om en rörelse för erfarna människor som vill fortsätta bidra.">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <meta name="theme-color" content="#1a6b63">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --deep-teal: #1a6b63;
+            --petrol: #0d3d3d;
+            --petrol-light: #8bc4bc;
+            --amber: #d4a84b;
+            --amber-dark: #c49a3d;
+            --sand: #e8dfd0;
+            --night: #1a1a2e;
+            --cream: #faf8f5;
+            --warm-gray: #6b6b6b;
+            --light-gray: #e8e6e3;
+            --white: #ffffff;
+            --font-serif: 'Fraunces', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow-soft: 0 4px 30px rgba(26, 26, 46, 0.08);
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-sans);
+            background: var(--cream);
+            color: var(--night);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 24px 0; background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(20px); box-shadow: var(--shadow-soft);
+        }
+        .nav__container {
+            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1100px; margin: 0 auto; padding: 0 24px;
+        }
+        .nav__logo {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 1.125rem; font-weight: 700; color: var(--night);
+            text-decoration: none;
+        }
+        .nav__logo img { width: 36px; height: 36px; }
+        .nav__back {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.9rem; font-weight: 500; color: var(--warm-gray);
+            text-decoration: none; transition: var(--transition-fast);
+        }
+        .nav__back:hover { color: var(--deep-teal); }
+        .nav__back svg { width: 18px; height: 18px; }
+
+        /* Hero */
+        .hero {
+            padding: 160px 24px 80px;
+            background: var(--night);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            border: 50px solid rgba(26, 107, 99, 0.1);
+            top: -100px; right: -80px;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: var(--amber);
+            opacity: 0.4;
+            top: 150px; right: 25%;
+        }
+        .hero__content { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
+        .hero__image {
+            width: 180px; height: 180px; margin: 0 auto 32px;
+            border-radius: 50%; border: 4px solid var(--amber);
+            overflow: hidden;
+        }
+        .hero__image img { width: 100%; height: 100%; object-fit: cover; }
+        .hero__name {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700; color: var(--white);
+            margin-bottom: 8px;
+        }
+        .hero__title {
+            font-size: 1.125rem; color: var(--amber);
+            margin-bottom: 24px;
+        }
+        .hero__tagline {
+            font-family: var(--font-serif);
+            font-size: 1.25rem; color: var(--sand);
+            font-style: italic;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 80px 24px;
+            background: var(--white);
+        }
+        .video-section__container { max-width: 800px; margin: 0 auto; }
+        .video-section h2 {
+            font-family: var(--font-serif);
+            text-align: center; 
+            margin-bottom: 40px;
+            font-size: 1.75rem;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 24px;
+            background: var(--night);
+            box-shadow: var(--shadow-soft);
+        }
+        .video-wrapper iframe, .video-wrapper video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            color: var(--warm-gray);
+            text-align: center;
+            padding: 24px;
+        }
+        .video-placeholder svg {
+            width: 64px; height: 64px;
+            margin-bottom: 16px;
+            opacity: 0.4;
+            stroke: var(--petrol-light);
+        }
+        .video-placeholder p { font-size: 1rem; color: var(--warm-gray); }
+
+        /* Story Section */
+        .story {
+            padding: 80px 24px;
+            background: var(--cream);
+        }
+        .story__container { max-width: 700px; margin: 0 auto; }
+        .story h2 {
+            font-family: var(--font-serif);
+            font-size: 1.75rem; 
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .story p {
+            font-size: 1.125rem; color: var(--warm-gray);
+            margin-bottom: 24px;
+        }
+        .story p:last-of-type { margin-bottom: 0; }
+        .story__quote {
+            font-family: var(--font-serif);
+            font-size: 1.5rem; 
+            font-weight: 500;
+            color: var(--deep-teal); 
+            font-style: italic;
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+            margin: 48px 0;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 24px;
+            background: var(--deep-teal);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta::before {
+            content: '';
+            position: absolute;
+            width: 250px; height: 250px;
+            border-radius: 50%;
+            border: 30px solid rgba(255,255,255,0.05);
+            bottom: -80px; left: -60px;
+        }
+        .cta h2 {
+            font-family: var(--font-serif);
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+        .cta p {
+            color: var(--sand);
+            font-size: 1.125rem;
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 2;
+        }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 18px 40px; font-family: var(--font-sans); font-size: 1rem; font-weight: 600;
+            border: none; border-radius: 50px; cursor: pointer; transition: var(--transition-medium);
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+        }
+        .btn--amber { background: var(--amber); color: var(--night); }
+        .btn--amber:hover { background: var(--amber-dark); transform: translateY(-2px); }
+
+        /* Footer */
+        .footer {
+            background: var(--night);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        .footer__logo {
+            display: inline-flex; align-items: center; gap: 12px;
+            color: var(--white); font-weight: 600;
+            text-decoration: none; margin-bottom: 16px;
+        }
+        .footer__logo img { width: 32px; height: 32px; }
+        .footer__text { color: var(--warm-gray); font-size: 0.875rem; }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0; transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__container">
+            <a href="/" class="nav__logo">
+                <img src="images/logo-teal.svg" alt="On Demand People">
+                On Demand People
+            </a>
+            <a href="/" class="nav__back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Tillbaka
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__content">
+            <div class="hero__image fade-in">
+                <img src="images/jacob-bergstrom.jpg" alt="Jacob Bergström">
+            </div>
+            <h1 class="hero__name fade-in">Jacob Bergström</h1>
+            <p class="hero__title fade-in">Grundare, On Demand People</p>
+            <p class="hero__tagline fade-in">"Erfarenhet ska cirkulera – inte låsas in."</p>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-section__container">
+            <h2>Min vision</h2>
+            <div class="video-wrapper">
+                <!-- 
+                    INSTRUKTION: Byt ut placeholder mot din video.
+                    
+                    För YouTube:
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+                    
+                    För Vimeo:
+                    <iframe src="https://player.vimeo.com/video/VIDEO_ID" allowfullscreen></iframe>
+                    
+                    För egen fil:
+                    <video controls poster="images/video-poster.jpg">
+                        <source src="video/jacob-vision.mp4" type="video/mp4">
+                    </video>
+                -->
+                <div class="video-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    <p>Video kommer snart</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story">
+        <div class="story__container">
+            <h2>Min historia</h2>
+            
+            <p>
+                Jag har jobbat med HR, ledarskap och organisationsutveckling i över 20 år. 
+                Jag har sett hur företag kämpar med att hitta rätt kompetens, och hur erfarna 
+                människor kämpar med att hitta rätt sammanhang.
+            </p>
+            
+            <p>
+                Det finns en enorm mängd visdom och erfarenhet hos människor runt 50, 60, 70 – 
+                som inte kommer till användning. Folk som har lyckats, som har massor att ge, 
+                men som inte har något naturligt sammanhang för det.
+            </p>
+            
+            <p>
+                Samtidigt finns det de som fortfarande jobbar heltid men vill bidra med mer 
+                än vad deras roll tillåter. De behöver inte sitta i ännu en styrelse. 
+                Men de vill dela sin erfarenhet när det passar.
+            </p>
+
+            <p class="story__quote">"Ge, och du kommer att få."</p>
+            
+            <p>
+                On Demand People är byggt på den principen. Det är en rörelse för erfarna 
+                människor som vill fortsätta bidra – inte för pengarna, utan för meningen. 
+                Vi träffas på riktigt. Vi delar erfarenhet. Och vi har kul tillsammans.
+            </p>
+            
+            <p>
+                Det här är inte en konsultpool. Det är inte ett LinkedIn-nätverk. 
+                Det är ett sammanhang där erfarenhet används med respekt.
+            </p>
+            
+            <p>
+                Om du känner igen dig – om du har mycket att ge och söker ett sammanhang 
+                för det – välkommen. Vi bygger detta tillsammans.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Vill du veta mer?</h2>
+        <p>Berätta lite om dig så hör jag av mig personligen.</p>
+        <a href="/#kontakt" class="btn btn--amber">Kontakta mig</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="/" class="footer__logo">
+            <img src="images/logo-white.svg" alt="On Demand People">
+            On Demand People
+        </a>
+        <p class="footer__text">© 2026 On Demand People</p>
+    </footer>
+</body>
+</html>

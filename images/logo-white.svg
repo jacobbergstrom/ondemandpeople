@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Main circle (O) -->
+  <circle cx="40" cy="50" r="30" fill="none" stroke="#ffffff" stroke-width="12"/>
+  <!-- Dot -->
+  <circle cx="80" cy="35" r="8" fill="#8bc4bc"/>
+</svg>

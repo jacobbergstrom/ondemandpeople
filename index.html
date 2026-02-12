@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="sv" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On Demand People | En rörelse för erfarna människor</title>
+    <meta name="description" content="Ett sammanhang för erfarna människor som vill fortsätta bidra. Fysiska möten, meningsfulla samtal, gemenskap. Powered by AI. Driven by humans.">
+    
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <meta name="theme-color" content="#1a6b63">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ondemandpeople.se/">
+    <meta property="og:title" content="On Demand People | En rörelse för erfarna människor">
+    <meta property="og:description" content="Ett sammanhang för erfarna människor som vill fortsätta bidra. Fysiska möten, meningsfulla samtal, gemenskap.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== DEEP OCEAN PALETTE ===== */
+        :root {
+            /* Primary Colors */
+            --deep-teal: #1a6b63;
+            --deep-teal-rgb: 26, 107, 99;
+            --petrol: #0d3d3d;
+            --petrol-light: #8bc4bc;
+            
+            /* Accent */
+            --amber: #d4a84b;
+            --amber-dark: #c49a3d;
+            --amber-light: #e8d5a0;
+            
+            /* Neutrals */
+            --sand: #e8dfd0;
+            --night: #1a1a2e;
+            --cream: #faf8f5;
+            --warm-gray: #6b6b6b;
+            --light-gray: #e8e6e3;
+            --white: #ffffff;
+            
+            /* Typography */
+            --font-serif: 'Fraunces', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            /* Effects */
+            --shadow-soft: 0 4px 30px rgba(26, 26, 46, 0.08);
+            --shadow-medium: 0 8px 40px rgba(26, 26, 46, 0.12);
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            
+            /* Layout */
+            --container-max: 1100px;
+            --section-padding: 120px;
+            --border-radius: 24px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        
+        body { 
+            font-family: var(--font-sans); 
+            font-weight: 400; 
+            line-height: 1.8; 
+            color: var(--night); 
+            background: var(--cream); 
+            overflow-x: hidden; 
+        }
+        
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; transition: var(--transition-fast); }
+
+        /* Typography */
+        h1, h2, h3, h4 { 
+            font-family: var(--font-serif); 
+            font-weight: 700; 
+            line-height: 1.15; 
+            color: var(--night);
+            letter-spacing: -0.02em;
+        }
+        h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; }
+        h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+        h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 600; }
+        h4 { font-family: var(--font-sans); font-size: 1rem; font-weight: 700; }
+        
+        p { font-size: 1.125rem; color: var(--warm-gray); }
+        .large-text { font-size: clamp(1.25rem, 2.5vw, 1.5rem); line-height: 1.7; }
+
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+        .section { padding: var(--section-padding) 0; }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 18px 40px; font-family: var(--font-sans); font-size: 1rem; font-weight: 600;
+            border: none; border-radius: 50px; cursor: pointer; transition: var(--transition-medium);
+        }
+        .btn--amber { 
+            background: var(--amber); 
+            color: var(--night); 
+        }
+        .btn--amber:hover { 
+            background: var(--amber-dark); 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 30px rgba(212, 168, 75, 0.35); 
+        }
+        .btn--outline { 
+            background: transparent; 
+            color: var(--night); 
+            border: 2px solid var(--light-gray); 
+        }
+        .btn--outline:hover { 
+            border-color: var(--deep-teal); 
+            color: var(--deep-teal); 
+        }
+        .btn--large { padding: 22px 52px; font-size: 1.125rem; }
+        .btn--small { padding: 14px 28px; font-size: 0.9rem; }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 24px 0; transition: var(--transition-medium);
+        }
+        .nav.scrolled {
+            background: rgba(250, 248, 245, 0.95); backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-soft); padding: 16px 0;
+        }
+        .nav__container {
+            display: flex; align-items: center; justify-content: space-between;
+            max-width: var(--container-max); margin: 0 auto; padding: 0 24px;
+        }
+        .nav__logo { 
+            display: flex; align-items: center; gap: 12px; 
+            font-family: var(--font-sans);
+            font-size: 1.125rem; font-weight: 700; color: var(--night); 
+        }
+        .nav__logo-img { width: 40px; height: 40px; }
+        .nav__links { display: flex; align-items: center; gap: 40px; }
+        .nav__link { font-size: 0.95rem; font-weight: 500; color: var(--warm-gray); }
+        .nav__link:hover { color: var(--deep-teal); }
+        .nav__cta { margin-left: 16px; }
+
+        .nav__toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .nav__toggle span { display: block; width: 22px; height: 2px; background: var(--night); margin: 5px 0; transition: var(--transition-fast); }
+
+        @media (max-width: 768px) {
+            .nav__links { display: none; }
+            .nav__toggle { display: block; }
+            .nav__links.active {
+                display: flex; flex-direction: column; position: absolute;
+                top: 100%; left: 0; right: 0; background: var(--white);
+                padding: 32px; gap: 24px; box-shadow: var(--shadow-medium);
+            }
+            .nav__cta { margin-left: 0; margin-top: 8px; }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: var(--night); position: relative; overflow: hidden;
+            padding: 120px 24px 80px; text-align: center;
+        }
+        .hero__bg {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(26, 107, 99, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(212, 168, 75, 0.1) 0%, transparent 50%);
+        }
+        /* Decorative circles */
+        .hero__bg::before {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            border: 60px solid rgba(26, 107, 99, 0.08);
+            top: -150px; right: -100px;
+        }
+        .hero__bg::after {
+            content: '';
+            position: absolute;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--amber);
+            opacity: 0.5;
+            top: 200px; right: 20%;
+        }
+        
+        .hero__content { position: relative; z-index: 2; max-width: 800px; }
+        
+        .hero__words { margin-bottom: 48px; }
+        .hero__word {
+            display: block; 
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 8vw, 5rem); 
+            font-weight: 800;
+            line-height: 1.1; 
+            letter-spacing: -0.03em; 
+            color: var(--white);
+            opacity: 0; transform: translateY(20px);
+            animation: wordIn 0.5s ease forwards;
+        }
+        .hero__word:nth-child(1) { animation-delay: 0.1s; }
+        .hero__word:nth-child(2) { animation-delay: 0.2s; color: var(--petrol-light); }
+        .hero__word:nth-child(3) { animation-delay: 0.3s; }
+        .hero__word:nth-child(4) { animation-delay: 0.4s; color: var(--petrol-light); }
+        .hero__word:nth-child(5) { animation-delay: 0.5s; color: var(--amber); }
+
+        @keyframes wordIn { to { opacity: 1; transform: translateY(0); } }
+
+        .hero__tagline {
+            font-family: var(--font-sans);
+            font-size: clamp(1.125rem, 2vw, 1.375rem); 
+            font-weight: 400;
+            color: var(--sand); 
+            margin-bottom: 48px; 
+            line-height: 1.7;
+            opacity: 0; animation: fadeIn 0.6s ease 0.7s forwards;
+        }
+        .hero__tagline em {
+            color: var(--petrol-light);
+            font-style: normal;
+        }
+        .hero__cta { opacity: 0; animation: fadeIn 0.6s ease 0.9s forwards; }
+        
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        .hero__scroll {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            color: var(--warm-gray); font-size: 0.75rem; letter-spacing: 0.15em;
+            text-transform: uppercase; font-weight: 500;
+            opacity: 0; animation: fadeIn 0.6s ease 1.2s forwards;
+        }
+        .hero__scroll::after {
+            content: ''; display: block; width: 1px; height: 40px;
+            background: var(--warm-gray); margin: 12px auto 0;
+            animation: scrollLine 1.5s ease infinite;
+        }
+        @keyframes scrollLine {
+            0%, 100% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            51% { transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        /* ===== CIRCULARITY ===== */
+        .circularity { background: var(--white); }
+        .circularity__content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .circularity__icon {
+            width: 80px; height: 80px; margin: 0 auto 32px;
+            background: var(--amber); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .circularity__icon svg { width: 40px; height: 40px; stroke: var(--night); }
+        .circularity__title { margin-bottom: 24px; }
+        .circularity__text { margin-bottom: 24px; max-width: 650px; margin-left: auto; margin-right: auto; }
+        .circularity__quote {
+            font-family: var(--font-serif);
+            font-size: 1.5rem; 
+            font-weight: 500; 
+            color: var(--deep-teal);
+            font-style: italic; 
+            margin: 48px 0; 
+            padding: 0 24px;
+        }
+
+        /* ===== MEETINGS ===== */
+        .meetings { background: var(--cream); overflow: hidden; }
+        .meetings__header { text-align: center; max-width: 700px; margin: 0 auto 64px; }
+        .meetings__label {
+            display: inline-block; 
+            font-family: var(--font-sans);
+            font-size: 0.75rem; 
+            font-weight: 600;
+            text-transform: uppercase; 
+            letter-spacing: 0.2em;
+            color: var(--deep-teal); 
+            margin-bottom: 16px;
+        }
+        .meetings__grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+        }
+        .meeting-card {
+            position: relative; border-radius: var(--border-radius); overflow: hidden;
+            aspect-ratio: 4/5; transition: var(--transition-medium);
+        }
+        .meeting-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-medium); }
+        .meeting-card img { width: 100%; height: 100%; object-fit: cover; }
+        .meeting-card__overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 32px 24px 24px;
+            background: linear-gradient(transparent, rgba(13, 61, 61, 0.9));
+        }
+        .meeting-card__title { 
+            font-family: var(--font-serif);
+            color: var(--white); 
+            font-size: 1.25rem; 
+            font-weight: 600;
+            margin-bottom: 4px; 
+        }
+        .meeting-card__subtitle { color: var(--amber); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .meetings__grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+        }
+
+        /* ===== WHO SECTION ===== */
+        .who { background: var(--petrol); color: var(--white); }
+        .who__header { text-align: center; margin-bottom: 64px; }
+        .who__header h2 { color: var(--white); }
+        .who__header p { color: var(--sand); max-width: 600px; margin: 16px auto 0; }
+        
+        .who__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .who__card {
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--border-radius); 
+            padding: 48px 40px; 
+            transition: var(--transition-medium);
+        }
+        .who__card:hover { 
+            background: rgba(255,255,255,0.06); 
+            border-color: rgba(212, 168, 75, 0.3); 
+        }
+        .who__card-icon {
+            width: 64px; height: 64px; 
+            background: var(--amber); 
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center; 
+            margin-bottom: 24px;
+        }
+        .who__card-icon svg { width: 32px; height: 32px; stroke: var(--night); }
+        .who__card h3 { color: var(--white); margin-bottom: 16px; font-size: 1.375rem; }
+        .who__card p { color: var(--sand); font-size: 1.05rem; line-height: 1.7; }
+
+        @media (max-width: 768px) {
+            .who__grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== FOUNDER ===== */
+        .founder { background: var(--white); }
+        .founder__content {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 64px;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .founder__image img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--amber);
+        }
+        .founder__label {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--deep-teal);
+            margin-bottom: 12px;
+        }
+        .founder__text h2 { margin-bottom: 24px; }
+        .founder__text .large-text { margin-bottom: 16px; }
+        .founder__text > p { margin-bottom: 32px; }
+        .founder__video { margin-bottom: 32px; }
+        .founder__video .btn { display: inline-flex; align-items: center; gap: 12px; }
+        .founder__signature { display: flex; flex-direction: column; gap: 4px; }
+        .founder__name { 
+            font-family: var(--font-serif);
+            font-size: 1.125rem; 
+            font-weight: 600; 
+            color: var(--night); 
+        }
+        .founder__title { font-size: 0.9rem; color: var(--warm-gray); }
+
+        @media (max-width: 768px) {
+            .founder__content { grid-template-columns: 1fr; text-align: center; }
+            .founder__image { max-width: 200px; margin: 0 auto; }
+            .founder__signature { align-items: center; }
+        }
+
+        /* ===== ADVISORY ===== */
+        .advisory { background: var(--sand); }
+        .advisory__content { max-width: 700px; margin: 0 auto; text-align: center; }
+        .advisory__content h2 { margin-bottom: 24px; }
+        .advisory__content > p { margin-bottom: 32px; color: var(--night); }
+        .advisory__options {
+            display: flex; justify-content: center; gap: 48px;
+            margin: 48px 0; flex-wrap: wrap;
+        }
+        .advisory__option {
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
+            font-weight: 500; color: var(--night); font-size: 1rem;
+        }
+        .advisory__option-icon { font-size: 2.5rem; }
+        .advisory__note {
+            font-family: var(--font-serif);
+            font-style: italic; 
+            color: var(--deep-teal); 
+            font-weight: 500;
+            font-size: 1.125rem;
+            padding-top: 32px; 
+            border-top: 1px solid rgba(26, 107, 99, 0.2);
+            max-width: 550px; 
+            margin: 0 auto;
+        }
+
+        /* ===== VALUES ===== */
+        .values { background: var(--white); }
+        .values__header { text-align: center; margin-bottom: 64px; }
+        .values__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+        .value-item { text-align: center; }
+        .value-item__icon {
+            width: 72px; height: 72px; margin: 0 auto 20px;
+            background: var(--amber); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .value-item__icon svg { width: 32px; height: 32px; stroke: var(--night); }
+        .value-item h4 { 
+            font-family: var(--font-serif);
+            margin-bottom: 8px; 
+            font-size: 1.25rem; 
+            font-weight: 600;
+        }
+        .value-item p { font-size: 0.95rem; color: var(--warm-gray); }
+
+        @media (max-width: 768px) {
+            .values__grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .values__grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: var(--deep-teal); 
+            padding: 100px 24px; 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            border: 40px solid rgba(255,255,255,0.05);
+            top: -100px; left: -60px;
+        }
+        .cta-section__content { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
+        .cta-section h2 { color: var(--white); margin-bottom: 24px; }
+        .cta-section p { color: var(--sand); margin-bottom: 40px; font-size: 1.25rem; }
+
+        /* ===== CONTACT ===== */
+        .contact { background: var(--cream); }
+        .contact__container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .contact__content h2 { margin-bottom: 24px; }
+        .contact__content > p { margin-bottom: 32px; }
+        .contact__info { display: flex; flex-direction: column; gap: 20px; margin-top: 40px; }
+        .contact__info-item { display: flex; align-items: center; gap: 16px; }
+        .contact__info-icon {
+            width: 48px; height: 48px; 
+            background: var(--amber); 
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; 
+            flex-shrink: 0;
+        }
+        .contact__info-icon svg { width: 22px; height: 22px; stroke: var(--night); }
+        .contact__info-text { font-weight: 500; color: var(--night); }
+        .contact__info-text a { color: var(--deep-teal); }
+        .contact__info-text a:hover { text-decoration: underline; }
+
+        .contact__form-wrapper {
+            background: var(--white); 
+            border-radius: var(--border-radius);
+            padding: 48px; 
+            box-shadow: var(--shadow-soft);
+        }
+        .contact__form { display: flex; flex-direction: column; gap: 24px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { 
+            font-size: 0.875rem; 
+            font-weight: 600; 
+            color: var(--night); 
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 16px 20px; 
+            font-family: var(--font-sans); 
+            font-size: 1rem;
+            border: 2px solid var(--light-gray); 
+            border-radius: 12px;
+            transition: var(--transition-fast); 
+            background: var(--white);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none; 
+            border-color: var(--amber);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+        @media (max-width: 968px) {
+            .contact__container { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        /* ===== CONSULTING LINK ===== */
+        .consulting-link {
+            background: var(--white); 
+            padding: 60px 24px; 
+            text-align: center;
+            border-top: 1px solid var(--light-gray);
+        }
+        .consulting-link p { color: var(--warm-gray); margin-bottom: 16px; }
+        .consulting-link a {
+            color: var(--deep-teal); 
+            font-weight: 600; 
+            font-size: 1rem;
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px;
+        }
+        .consulting-link a:hover { color: var(--amber); }
+        .consulting-link svg { width: 18px; height: 18px; }
+
+        /* ===== FOOTER ===== */
+        .footer { background: var(--night); padding: 60px 0 40px; }
+        .footer__content {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 24px;
+        }
+        .footer__logo { 
+            display: flex; align-items: center; gap: 12px; 
+            color: var(--white); 
+            font-family: var(--font-sans);
+            font-weight: 600; 
+        }
+        .footer__logo-img { width: 32px; height: 32px; }
+        .footer__text { color: var(--warm-gray); font-size: 0.875rem; }
+        .footer__links { display: flex; gap: 32px; }
+        .footer__links a { color: var(--warm-gray); font-size: 0.875rem; }
+        .footer__links a:hover { color: var(--amber); }
+
+        @media (max-width: 640px) {
+            .footer__content { flex-direction: column; text-align: center; }
+            .footer__links { justify-content: center; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav__container">
+            <a href="/" class="nav__logo">
+                <img src="images/logo-teal.svg" alt="On Demand People" class="nav__logo-img">
+                On Demand People
+            </a>
+            <div class="nav__links" id="navLinks">
+                <a href="#cirkularitet" class="nav__link">Vår idé</a>
+                <a href="#moten" class="nav__link">Möten</a>
+                <a href="#grundaren" class="nav__link">Grundaren</a>
+                <a href="#kontakt" class="btn btn--amber btn--small nav__cta">Vill du veta mer?</a>
+            </div>
+            <button class="nav__toggle" id="navToggle" aria-label="Meny">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__bg"></div>
+        <div class="hero__content">
+            <div class="hero__words">
+                <span class="hero__word">Wisdom.</span>
+                <span class="hero__word">Experience.</span>
+                <span class="hero__word">Good People.</span>
+                <span class="hero__word">Purpose.</span>
+                <span class="hero__word">Fun.</span>
+            </div>
+            <p class="hero__tagline">
+                En rörelse för erfarna människor som vill fortsätta bidra.<br>
+                Fysiska möten. Meningsfulla samtal. Gemenskap.<br>
+                <em>Powered by AI. Driven by humans.</em>
+            </p>
+            <div class="hero__cta">
+                <a href="#kontakt" class="btn btn--amber btn--large">Vill du veta mer?</a>
+            </div>
+        </div>
+        <div class="hero__scroll">Scroll</div>
+    </section>
+
+    <!-- Circularity -->
+    <section class="section circularity" id="cirkularitet">
+        <div class="container">
+            <div class="circularity__content fade-in">
+                <div class="circularity__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 0 1 9-9"/>
+                    </svg>
+                </div>
+                <h2 class="circularity__title">Erfarenhet ska cirkulera</h2>
+                <p class="circularity__text large-text">
+                    Det finns en enorm mängd visdom och erfarenhet som är inlåst. 
+                    Människor med decennier av insikter som inte har något naturligt sammanhang att dela dem i.
+                </p>
+                <p class="circularity__text large-text">
+                    Vi tror på cirkularitet – att frigöra den kompetens som redan finns 
+                    och låta den komma till nytta. Inte för att man måste, utan för att man vill.
+                </p>
+                <p class="circularity__quote">"Ge, och du kommer att få."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meetings -->
+    <section class="section meetings" id="moten">
+        <div class="container">
+            <div class="meetings__header fade-in">
+                <span class="meetings__label">Det som räknas</span>
+                <h2>Riktiga möten mellan riktiga människor</h2>
+                <p>I en digital värld är det fysiska mötet mer värdefullt än någonsin. Vi ses på riktigt – över middag, på resor, i samtal som betyder något.</p>
+            </div>
+            <div class="meetings__grid">
+                <div class="meeting-card fade-in">
+                    <img src="images/coffee-meeting-1.png" alt="Samtal över kaffe">
+                    <div class="meeting-card__overlay">
+                        <div class="meeting-card__title">Samtal</div>
+                        <div class="meeting-card__subtitle">Öga mot öga</div>
+                    </div>
+                </div>
+                <div class="meeting-card fade-in">
+                    <img src="images/team-whiteboard.png" alt="Workshop tillsammans">
+                    <div class="meeting-card__overlay">
+                        <div class="meeting-card__title">Workshops</div>
+                        <div class="meeting-card__subtitle">Tänka tillsammans</div>
+                    </div>
+                </div>
+                <div class="meeting-card fade-in">
+                    <img src="images/skiing-group.png" alt="Skidresa i Alperna">
+                    <div class="meeting-card__overlay">
+                        <div class="meeting-card__title">Upplevelser</div>
+                        <div class="meeting-card__subtitle">Ha kul ihop</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who is it for -->
+    <section class="section who" id="for-vem">
+        <div class="container">
+            <div class="who__header fade-in">
+                <h2>För vem?</h2>
+                <p>On Demand People är för erfarna människor som vill fortsätta bidra – på sina villkor.</p>
+            </div>
+            <div class="who__grid">
+                <div class="who__card fade-in">
+                    <div class="who__card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M8 21h8M12 17v4"/>
+                        </svg>
+                    </div>
+                    <h3>Du som fortfarande jobbar</h3>
+                    <p>
+                        Du har ett heltidsjobb men mer att ge än vad rollen tillåter. 
+                        Du behöver inte sitta i ännu en styrelse. Men du vill bidra 
+                        med din erfarenhet när det passar – och träffa likasinnade.
+                    </p>
+                </div>
+                <div class="who__card fade-in">
+                    <div class="who__card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>Du som lyckats klart</h3>
+                    <p>
+                        Du behöver inte jobba mer. Men du vill fortsätta bidra – 
+                        inte för pengarna, utan för att det är meningsfullt. 
+                        Du är en generös människa som gillar andra människor.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="section founder" id="grundaren">
+        <div class="container">
+            <div class="founder__content fade-in">
+                <div class="founder__image">
+                    <img src="images/jacob-bergstrom.jpg" alt="Jacob Bergström – Grundare">
+                </div>
+                <div class="founder__text">
+                    <span class="founder__label">Från grundaren</span>
+                    <h2>Varför jag startade detta</h2>
+                    <p class="large-text">
+                        Det finns så otroligt mycket erfarenhet och visdom hos människor runt 50, 60, 70 – 
+                        som inte kommer till användning. Folk som har lyckats, som har massor att ge, 
+                        men som saknar ett naturligt sammanhang för det.
+                    </p>
+                    <p>
+                        On Demand People är det sammanhanget. Vi träffas på riktigt, 
+                        delar erfarenhet, och har kul tillsammans. Inte för pengarna – för meningen.
+                    </p>
+                    <div class="founder__video">
+                        <a href="jacob.html" class="btn btn--outline">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
+                            </svg>
+                            Se min vision (video)
+                        </a>
+                    </div>
+                    <div class="founder__signature">
+                        <span class="founder__name">Jacob Bergström</span>
+                        <span class="founder__title">Grundare, On Demand People</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advisory Section -->
+    <section class="section advisory" id="advisory">
+        <div class="container">
+            <div class="advisory__content fade-in">
+                <h2>Och ja – ibland konsultar vi också</h2>
+                <p class="large-text">
+                    Företag kan anlita oss som Advisory Board. När du som medlem bidrar i uppdrag 
+                    väljer du själv vad som händer med ersättningen:
+                </p>
+                <div class="advisory__options">
+                    <div class="advisory__option">
+                        <span class="advisory__option-icon">💰</span>
+                        <span>Ta ut pengarna själv</span>
+                    </div>
+                    <div class="advisory__option">
+                        <span class="advisory__option-icon">❤️</span>
+                        <span>Skänk till välgörenhet</span>
+                    </div>
+                    <div class="advisory__option">
+                        <span class="advisory__option-icon">✈️</span>
+                        <span>Spara till gemensamma upplevelser</span>
+                    </div>
+                </div>
+                <p class="advisory__note">
+                    Vi är inte vinstdrivande. Men vi är kommersiellt hållbara. 
+                    Överskottet går tillbaka – till samhället och till gemenskapen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section values" id="varderingar">
+        <div class="container">
+            <div class="values__header fade-in">
+                <h2>Det vi tror på</h2>
+            </div>
+            <div class="values__grid">
+                <div class="value-item fade-in">
+                    <div class="value-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h4>Passion</h4>
+                    <p>Vi älskar det vi gör</p>
+                </div>
+                <div class="value-item fade-in">
+                    <div class="value-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h4>Tillsammans</h4>
+                    <p>Vi blir starkare ihop</p>
+                </div>
+                <div class="value-item fade-in">
+                    <div class="value-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <h4>Mod</h4>
+                    <p>Vi vågar säga sanningen</p>
+                </div>
+                <div class="value-item fade-in">
+                    <div class="value-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h4>Tillit</h4>
+                    <p>Grunden för allt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-section__content fade-in">
+            <h2>Nyfiken?</h2>
+            <p>On Demand People bygger på personliga relationer. Berätta lite om dig så hör vi av oss.</p>
+            <a href="#kontakt" class="btn btn--amber btn--large">Vill du veta mer?</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="kontakt">
+        <div class="container contact__container">
+            <div class="contact__content fade-in">
+                <h2>Berätta om dig</h2>
+                <p class="large-text">On Demand People bygger på personliga relationer. Fyll i formuläret så hör vi av oss – antingen för att vi vill veta mer, eller för att någon i nätverket redan känner dig.</p>
+                <div class="contact__info">
+                    <div class="contact__info-item">
+                        <div class="contact__info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <span class="contact__info-text">
+                            <a href="mailto:hello@ondemandpeople.com">hello@ondemandpeople.com</a>
+                        </span>
+                    </div>
+                    <div class="contact__info-item">
+                        <div class="contact__info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <span class="contact__info-text">Göteborg, Sverige</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact__form-wrapper fade-in">
+                <form class="contact__form" id="contactForm" action="tack.html" method="GET">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Förnamn</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Efternamn</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-post</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="expertise">Kompetensområde</label>
+                        <select id="expertise" name="expertise" required>
+                            <option value="">Välj ditt huvudområde</option>
+                            <option value="hr">HR & People</option>
+                            <option value="finance">Finance & CFO</option>
+                            <option value="tech">Tech & IT</option>
+                            <option value="legal">Legal & Compliance</option>
+                            <option value="sales">Sales & Commercial</option>
+                            <option value="marketing">Marketing & Communication</option>
+                            <option value="strategy">Strategy & Management</option>
+                            <option value="operations">Operations & Supply Chain</option>
+                            <option value="other">Annat</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Berätta kort om dig själv</label>
+                        <textarea id="message" name="message" placeholder="Vem är du? Vad har du gjort? Varför är du nyfiken på On Demand People?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--amber btn--large" style="width: 100%;">Skicka</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consulting Link -->
+    <section class="consulting-link">
+        <p>Letar du efter vanliga konsultuppdrag – för att du måste eller vill ta större uppdrag?</p>
+        <a href="https://ondemandconsulting.com" target="_blank">
+            Du är varmt välkommen till On Demand Consulting
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__logo">
+                    <img src="images/logo-white.svg" alt="On Demand People" class="footer__logo-img">
+                    On Demand People
+                </div>
+                <p class="footer__text">© 2026 On Demand People</p>
+                <div class="footer__links">
+                    <a href="https://hrondemand.se" target="_blank">HR On Demand</a>
+                    <a href="mailto:hello@ondemandpeople.com">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+        // Mobile menu
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav__link').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Fade animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Form - skicka mail och redirect till tack-sida
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const data = new FormData(this);
+            
+            // Spara till localStorage för att visa på tack-sidan
+            localStorage.setItem('odpName', data.get('firstName'));
+            
+            // Skicka mail i bakgrunden
+            const subject = encodeURIComponent('Intresseanmälan - On Demand People');
+            const body = encodeURIComponent(
+                `Ny intresseanmälan till On Demand People\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                `Namn: ${data.get('firstName')} ${data.get('lastName')}\n` +
+                `E-post: ${data.get('email')}\n` +
+                `Telefon: ${data.get('phone')}\n` +
+                `Kompetens: ${data.get('expertise')}\n\n` +
+                `Om personen:\n${data.get('message') || '(Inget meddelande)'}`
+            );
+            
+            // Öppna mail-klient i nytt fönster, sedan redirect
+            window.open(`mailto:hello@ondemandpeople.com?subject=${subject}&body=${body}`, '_blank');
+            
+            // Redirect till tack-sidan
+            setTimeout(() => {
+                window.location.href = 'tack.html';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
